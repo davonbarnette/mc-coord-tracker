@@ -24,6 +24,17 @@ export default class CoordinatesAPI {
         }
     }
 
+    static async deleteCoordinate(id){
+        try{
+            let res = await axios.delete(`/minecraft-coordinates/${id}`);
+            if (res.data){
+                return res.data as IMinecraftCoordinate;
+            }
+        } catch (e){
+            console.error('Could not get minecraft coordinates');
+        }
+    }
+
     static async createCoordinates(values:any){
         try{
             let res = await axios.post('/minecraft-coordinates', values);

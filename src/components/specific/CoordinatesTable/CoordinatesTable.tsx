@@ -57,6 +57,14 @@ function CoordinatesTable() {
 
     const debouncedSearch = _.debounce(onSearch, 300);
 
+    async function onCoordinateDelete(id){
+        await CoordinatesAPI.deleteCoordinate(id);
+        if (coords){
+            let filtered = coords.filter(coord => coord.id !== id);
+            setCoords(filtered);
+        }
+    }
+
     return (
         <div className='coordinates-table'>
             <div className='header'>
@@ -81,7 +89,7 @@ function CoordinatesTable() {
                     </Row>
                 </Form>
             </div>
-            <Table rowKey='id' dataSource={coords} columns={CoordinatesTableConfig} pagination={{size: 'small'}}/>
+            <Table rowKey='id' dataSource={coords} columns={CoordinatesTableConfig(onCoordinateDelete)} pagination={{size: 'small'}}/>
         </div>
     )
 }
