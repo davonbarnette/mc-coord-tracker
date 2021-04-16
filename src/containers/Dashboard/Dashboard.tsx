@@ -20,12 +20,12 @@ function Dashboard() {
                 <div className='directions-wrapper'>
                     <Directions/>
                 </div>
-                <div className='coordinates-table-wrapper'>
-                     <CoordinatesTable/>
-                </div>
+                <ScatterChart data={getCoordinates()}/>
             </div>
             <div className='right'>
-                <ScatterChart data={getCoordinates()}/>
+                <div className='coordinates-table-wrapper'>
+                    <CoordinatesTable/>
+                </div>
             </div>
         </div>
     )

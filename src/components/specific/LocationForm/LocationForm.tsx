@@ -7,9 +7,10 @@ import Button from "../../common/Button/Button";
 
 import cx from "classnames";
 import CoordinatesAPI from "../../../api/CoordinatesAPI";
-import {LocationFormTypes} from "./Types";
+import {ELocationCategory, LocationFormTypes} from "./Types";
 import {IMinecraftCoordinate} from "../../../api/CoordinatesTypes";
 import WorldSelect from "../WorldSelect/WorldSelect";
+import LocationCategorySelect from "../LocationCategorySelect/LocationCategorySelect";
 
 
 interface Props {
@@ -36,6 +37,7 @@ function LocationForm(props: Props) {
     }, [form]);
 
     const initialValues = {
+        [LocationFormTypes.Category]: ELocationCategory.Miscellaneous,
     }
     const formProps = {
         colon: false,
@@ -83,7 +85,7 @@ function LocationForm(props: Props) {
     return (
         <div className='location-form-wrapper'>
             <Form {...formProps} layout='vertical' form={form} onValuesChange={onValuesChange}
-                  initialValues={initialValues} requiredMark='optional'>
+                  requiredMark='optional'>
                 <Form.Item label='Location Name' name={LocationFormTypes.Name}
                            validateTrigger='onSubmit'
                            rules={[{required: true, message: 'This field is required.'}]}>
@@ -110,6 +112,11 @@ function LocationForm(props: Props) {
                         </Form.Item>
                     </Col>
                 </Row>
+                <Form.Item label='Category' name={LocationFormTypes.Category}
+                           validateTrigger='onSubmit' initialValue={ELocationCategory.Miscellaneous}
+                           rules={[{required: true, message: 'This field is required.'}]}>
+                    <LocationCategorySelect/>
+                </Form.Item>
                 <Form.Item label='Owner' name={LocationFormTypes.Owner}
                            validateTrigger='onSubmit'
                            rules={[{required: true, message: 'This field is required.'}]}>

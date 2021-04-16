@@ -10,16 +10,17 @@ import {StringUtils} from "../../../global/utils/string";
 import WorldIcon from "../WorldIcon/WorldIcon";
 
 interface Props {
-    onChange?: (id:number, coordinate:IMinecraftCoordinate) => void,
+    onChange?: (id: number, coordinate: IMinecraftCoordinate) => void,
     loading?: boolean,
     option?: number
     disabled?: boolean,
     placeholder?: string,
     value?: number,
+    maximum?: number
 }
 
 function CoordinateSelectAsInput(props: Props) {
-    const {onChange, placeholder} = props;
+    const {onChange, placeholder, maximum} = props;
     const [coordinates, setCoordinates] = useState<IMinecraftCoordinate[]>([]);
     const [loading, setLoading] = useState(false);
 
@@ -32,20 +33,21 @@ function CoordinateSelectAsInput(props: Props) {
 
     async function onSearch(value: string) {
         if (!value) {
-            return null;
+            await getCoordinates({_limit: 4});
+        } else {
+            await getCoordinates({name_contains: value});
         }
-        await getCoordinates({name_contains: value});
     }
 
     const debouncedSearch = _.debounce(onSearch, 300);
 
     useEffect(() => {
-        getCoordinates();
+        getCoordinates({_limit: 4});
     }, [])
 
     function onCoordinateClick(id: number) {
         let filtered = coordinates.filter(coord => coord.id === id);
-        if (filtered.length === 1){
+        if (filtered.length === 1) {
             if (onChange) onChange(id, filtered[0]);
         }
     }
@@ -63,7 +65,8 @@ function CoordinateSelectAsInput(props: Props) {
     }
 
     function renderContent() {
-        if (loading){
+
+        if (loading) {
             return <LoadingOutlined spin/>
         }
         if (props.value) {
@@ -74,7 +77,7 @@ function CoordinateSelectAsInput(props: Props) {
                 return (
                     <div className='world-group' key={world}>
                         <div className='world'>
-                            <WorldIcon world={world} style={{width:24, marginRight:6}}/>
+                            <WorldIcon world={world} style={{width: 24, marginRight: 6}}/>
                             The {StringUtils.camelCaseToRegular(world, true)}
                         </div>
                         <div className='coordinate-results'>
@@ -127,7 +130,6 @@ function CoordinateSelectAsInput(props: Props) {
             }
         }
     }
-
 
 
     return (

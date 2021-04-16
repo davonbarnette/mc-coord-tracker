@@ -63,7 +63,7 @@ function CoordinatesTable() {
                 <div className='title'>
                     Locations
                 </div>
-                <LocationFormDrawer asButton onSubmit={getCoordinates}/>
+                <LocationFormDrawer asButton onSubmit={() => getCoordinates()}/>
             </div>
             <div className='filters'>
                 <Form layout='vertical' onValuesChange={debouncedSearch}>

@@ -25,6 +25,15 @@ const CoordinatesTableConfig = [
         }
     },
     {
+        id: 'category',
+        title: 'Category',
+        dataIndex: 'category',
+        render: (category: string) => {
+            if (category) return StringUtils.camelCaseToRegular(category, true);
+            else return null;
+        }
+    },
+    {
         id: 'world',
         title: 'World',
         dataIndex: 'world',
