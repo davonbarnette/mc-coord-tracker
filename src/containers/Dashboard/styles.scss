@@ -1,0 +1,15 @@
+@import '../../global/scss/config';
+
+.dashboard {
+  @include flex(row, flex-start, center);
+  @include pad-box(36px 48px);
+  @include max-size;
+  flex: 1 1 100%;
+
+  .left {
+    @include flex(column, flex-start, flex-start);
+    flex: 0 1 350px;
+    height:100%;
+    margin-right:24px;
+  }
+}

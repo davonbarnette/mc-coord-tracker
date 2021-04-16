@@ -1,0 +1,12 @@
+@import '../../../global/scss/config';
+
+.directions {
+  @include box-shadow-4;
+  overflow: hidden;
+  border-radius:10px;
+  width:100%;
+  .label {
+    @include pad-box(6px 12px);
+    @include border(none none solid none);
+  }
+}

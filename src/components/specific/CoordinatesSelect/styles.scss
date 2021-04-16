@@ -1,0 +1,18 @@
+@import '../../../global/scss/config';
+
+.coordinates-select {
+  width:100%;
+  outline:none !important;
+  &-add-coordinates {
+    @include flex(row, flex-start, center);
+    @include pad-box(12px);
+    & button {
+      flex: 1 0 200px;
+    }
+  }
+
+  .ant-select-selector {
+    border:none !important;
+    outline:none !important;
+  }
+}
