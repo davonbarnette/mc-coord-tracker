@@ -81,7 +81,7 @@ function Directions() {
             </div>
             <Form form={form} layout='vertical' onValuesChange={onValuesChange} onReset={onValuesChange}>
                 <Form.Item name='destination'>
-                    <CoordinateSelectAsInput placeholder='Select a Destination'/>
+                    <CoordinateSelectAsInput placeholder='Search and Select a Destination'/>
                 </Form.Item>
                 {stateDestination &&
                 <Form.Item name='from'>

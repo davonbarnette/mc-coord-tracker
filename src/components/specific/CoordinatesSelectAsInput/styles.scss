@@ -35,27 +35,7 @@
       margin-left: 12px;
 
       .name {
-
-      }
-
-      .coordinates {
-        @include flex(row, flex-start, center);
-        @include font(13px, 600, 0, $medium-gray);
-        margin-left: auto;
-
-        .x {
-          color: $light-blue;
-          margin-right: 6px;
-        }
-
-        .y {
-          color: $green;
-          margin-right: 6px;
-        }
-
-        .z {
-          color: $orange;
-        }
+        margin-right:auto;
       }
     }
 

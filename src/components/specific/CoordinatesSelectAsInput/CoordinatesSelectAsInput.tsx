@@ -8,6 +8,7 @@ import {IMinecraftCoordinate} from "../../../api/CoordinatesTypes";
 import CoordinatesAPI from "../../../api/CoordinatesAPI";
 import {StringUtils} from "../../../global/utils/string";
 import WorldIcon from "../WorldIcon/WorldIcon";
+import XYZList from "../XYZList/XYZList";
 
 interface Props {
     onChange?: (id: number, coordinate: IMinecraftCoordinate) => void,
@@ -88,11 +89,7 @@ function CoordinateSelectAsInput(props: Props) {
                                         <EnvironmentOutlined style={{fontSize: 16}}/>
                                         <div className='info'>
                                             <div className='name'>{name}</div>
-                                            <div className='coordinates'>
-                                                <div className='x'>{x}</div>
-                                                <div className='y'>{y || 'None'}</div>
-                                                <div className='z'>{z}</div>
-                                            </div>
+                                            <XYZList coordinate={coord}/>
                                         </div>
                                     </div>
                                 )

@@ -3,6 +3,14 @@
 .coordinate-map {
   width:100%;
 
+  .tooltip-container {
+    @include pad-box(12px 9px);
+    .name {
+      @include font(14px, 700, 0, $dark-gray);
+      margin-bottom:12px;
+    }
+  }
+
   .worlds {
     @include flex(row, flex-start, center);
     margin-bottom:12px;

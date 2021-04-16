@@ -3,6 +3,7 @@ import React from 'react';
 import {StringUtils} from "../../../global/utils/string";
 import {Popover, Typography} from "antd";
 import WorldIcon from "../WorldIcon/WorldIcon";
+import XYZList from "../XYZList/XYZList";
 
 const CoordinatesTableConfig = [
     {
@@ -10,17 +11,12 @@ const CoordinatesTableConfig = [
         title: 'Name',
         dataIndex: 'name',
         render: (name: string, record: IMinecraftCoordinate) => {
-            const {x, y, z} = record;
             return (
                 <div className='name-column'>
                     <div className='name'>
                         {name}
                     </div>
-                    <div className='coordinates'>
-                        <div className='x'>{x}</div>
-                        <div className='y'>{y || 'None'}</div>
-                        <div className='z'>{z}</div>
-                    </div>
+                    <XYZList coordinate={record}/>
                 </div>
             )
         }

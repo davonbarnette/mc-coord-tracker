@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import cx from 'classnames';
+import {Scatter, G2} from '@ant-design/charts';
 
 import './styles.scss';
 
@@ -8,6 +9,7 @@ import {EWorlds, IMinecraftCoordinate} from "../../../api/CoordinatesTypes";
 import CoordinatesAPI from "../../../api/CoordinatesAPI";
 import {StringUtils} from "../../../global/utils/string";
 import WorldIcon from "../WorldIcon/WorldIcon";
+import XYZList from "../XYZList/XYZList";
 
 function Map() {
     const [coordinates, setCoordinates] = useState<IMinecraftCoordinate[]>([]);
@@ -24,21 +26,43 @@ function Map() {
         getCoordinates({world});
     }, [])
 
-    let coordsParsed = [];
-    let labels = [];
-
-    let data = []
-
-    coordinates.forEach(coord => {
-        coordsParsed.push({x: coord.x, y: coord.z});
-        labels.push(coord.name);
-
-        data.push([coord.x, coord.z])
-    })
-
     function onWorldChange(world) {
+        setWorld(world);
         getCoordinates({world});
     }
+
+    let config = {
+        key: world,
+        appendPadding: 30,
+        data: coordinates,
+        xField: 'x',
+        yField: 'z',
+        pointStyle: {fillOpacity: 1, fill: '#5d84e4', stroke: 'transparent', r: 6},
+        yAxis: {
+            nice: true,
+            line: {style: {stroke: '#aaa'}},
+        },
+        tooltip: {
+            showMarkers: false,
+            fields: ['x', 'z'],
+            customContent: (title, items) => {
+                console.log('items', items);
+                if (items[0]) {
+                    let data = items[0].data;
+                    return (
+                        <div className='tooltip-container'>
+                            <div className='name'>{data.name}</div>
+                            <XYZList coordinate={data}/>
+                        </div>
+                    )
+                }
+            }
+        },
+        xAxis: {
+            grid: {line: {style: {stroke: '#eee'}}},
+            line: {style: {stroke: '#aaa'}},
+        },
+    };
 
 
     return (
@@ -55,7 +79,7 @@ function Map() {
                     )
                 })}
             </div>
-            <ScatterChart data={data}/>
+            <Scatter {...config} />
         </div>
     )
 }
