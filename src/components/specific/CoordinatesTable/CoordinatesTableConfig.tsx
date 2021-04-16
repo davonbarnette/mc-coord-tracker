@@ -2,6 +2,7 @@ import {IMinecraftCoordinate} from "../../../api/CoordinatesTypes";
 import React from 'react';
 import {StringUtils} from "../../../global/utils/string";
 import {Popover, Typography} from "antd";
+import WorldIcon from "../WorldIcon/WorldIcon";
 
 const CoordinatesTableConfig = [
     {
@@ -38,7 +39,13 @@ const CoordinatesTableConfig = [
         title: 'World',
         dataIndex: 'world',
         render: (world: string) => {
-            return StringUtils.camelCaseToRegular(world, true);
+            return (
+                <div>
+
+                    <WorldIcon world={world} style={{width:20, marginRight:9}}/>
+                    {StringUtils.camelCaseToRegular(world, true)}
+                </div>
+            )
         }
     },
     {

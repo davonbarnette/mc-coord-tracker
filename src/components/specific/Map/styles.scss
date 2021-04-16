@@ -1,0 +1,32 @@
+@import "../../../global/scss/config";
+
+.coordinate-map {
+  width:100%;
+
+  .worlds {
+    @include flex(row, flex-start, center);
+    margin-bottom:12px;
+    .world {
+      @include pad-box(6px 12px);
+      margin-right:12px;
+      transition: all 0.2s;
+      border-radius:5px;
+
+
+      &.selected {
+        background:$light-blue;
+        color:white;
+      }
+
+      &:not(.selected):hover {
+        cursor: pointer;
+        background:#e8e8e8;
+      }
+
+      &:last-of-type {
+        margin-right:0;
+      }
+    }
+  }
+
+}
