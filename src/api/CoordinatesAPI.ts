@@ -13,5 +13,26 @@ export default class CoordinatesAPI {
             console.error('Could not get minecraft coordinates');
         }
     }
+    static async getCoordinateById(id){
+        try{
+            let res = await axios.get(`/minecraft-coordinates/${id}`);
+            if (res.data){
+                return res.data as IMinecraftCoordinate;
+            }
+        } catch (e){
+            console.error('Could not get minecraft coordinates');
+        }
+    }
+
+    static async createCoordinates(values:any){
+        try{
+            let res = await axios.post('/minecraft-coordinates', values);
+            if (res.data){
+                return res.data as IMinecraftCoordinate;
+            }
+        } catch (e){
+            console.error('Could not get minecraft coordinates');
+        }
+    }
 
 }

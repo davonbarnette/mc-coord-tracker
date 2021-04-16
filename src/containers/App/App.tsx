@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Redirect, Route, RouteComponentProps, Switch, withRouter} from "react-router-dom";
+import {Redirect, RouteComponentProps, Switch, withRouter} from "react-router-dom";
 import {observer} from "mobx-react";
 import {Layout} from "antd";
 

@@ -1,10 +1,47 @@
 @import '../../../global/scss/config';
 
 .directions {
-  @include box-shadow-4;
-  overflow: hidden;
-  border-radius:10px;
-  width:100%;
+  width: 100%;
+
+  .header {
+    @include flex(row, space-between, center);
+    @include pad-box(9px 18px);
+    @include border(none none solid none);
+    transition: all 0.2s;
+
+    .title {
+      @include font(20px, 700, 0, $dark-gray);
+      font-family: IBM Plex Sans, sans-serif;
+
+    }
+  }
+
+  .ant-form-item {
+    margin-bottom: 0;
+    border: none !important;
+
+    &:focus-within {
+      box-shadow: none;
+      border: 1px solid transparent;
+    }
+  }
+
+  .bottom-info {
+    @include pad-box(12px);
+    .speeds {
+      @include flex(row, flex-start, center);
+      margin-top:12px;
+
+      .speed-title {
+        @include font(12px, 500, 0, $medium-gray);
+      }
+
+      .time {
+        margin-right: 24px;
+      }
+    }
+  }
+
   .label {
     @include pad-box(6px 12px);
     @include border(none none solid none);

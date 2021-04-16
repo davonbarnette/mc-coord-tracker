@@ -1,0 +1,16 @@
+@import "../../../global/scss/config";
+
+.location-form-wrapper {
+  @include scale-max-content-width;
+  @include flex(column, space-between, flex-start);
+  @include max-size;
+}
+
+.location-form-drawer {
+  & .location-form {
+    width:100%;
+    &.as-drawer {
+      @include pad-box(24px);
+    }
+  }
+}

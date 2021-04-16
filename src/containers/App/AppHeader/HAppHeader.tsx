@@ -1,17 +1,15 @@
 import cx from 'classnames';
 import React, {Component} from "react";
 import {RouteComponentProps, withRouter} from "react-router";
-import {Layout, Avatar, Dropdown, Menu} from 'antd';
-import {RocketOutlined, CaretDownOutlined, LogoutOutlined, TeamOutlined} from '@ant-design/icons';
+import {Layout, Menu} from 'antd';
+import {LogoutOutlined} from '@ant-design/icons';
 import {observer} from "mobx-react";
 
 import './styles.scss';
 
 import { AppRoutesPathReference, AppHeaderItemsMap } from '../RoutesRegister';
 import BrowserRouter, { BrowserRoutes } from '../../../stores/App/BrowserRouter';
-// import Logo from "../../../../assets/logo.png";
 import AppActions from "../../../stores/App/AppActions";
-import AppStore from "../../../stores/App/AppStore";
 
 
 const {Header} = Layout;
@@ -82,16 +80,6 @@ class AppHeader extends Component<Props, any> {
                     </div>
 
                     <div className='app-header-right'>
-                        <Dropdown overlay={this.menu} trigger={['click']}>
-                            <div className='user-container'>
-                            <Avatar style={{backgroundColor: '#16c784'}} icon={<RocketOutlined/>}/>
-                            <div className='user'>
-                                <div className='name'>{AppStore.user?.firstName} {AppStore.user?.lastName}</div>
-                                <div className='email'>{AppStore.user?.email}</div>
-                            </div>
-                            <CaretDownOutlined style={{color:'white'}}/>
-                        </div>
-                        </Dropdown>
                     </div>
                 </div>
             </Header>

@@ -1,9 +1,15 @@
-export interface IMinecraftCoordinate {
+import {MinecraftPoint} from "../global/utils/Minecraft";
+
+export interface IMinecraftCoordinate extends MinecraftPoint{
     id:number,
-    x:number,
-    y:number,
-    z:number,
     name:string,
     owner:string,
     description:string,
+    world:EWorlds,
+}
+
+export enum EWorlds {
+    Overworld = 'overworld',
+    Nether = 'nether',
+    End = 'end',
 }

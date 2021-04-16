@@ -13,13 +13,13 @@ const {Option} = Select;
 interface Props {
     onChange?: (type: string) => void,
     loading?: boolean,
-    className?: string,
     option?: number
     disabled?: boolean,
+    placeholder?:string,
 }
 
 function CoordinateSelect(props: Props) {
-    const {className, onChange, loading, option} = props;
+    const {onChange, loading, option, placeholder} = props;
     const [coordinates, setCoordinates] = useState<IMinecraftCoordinate[]>();
 
     async function getCoordinates(params?: any) {
@@ -42,7 +42,7 @@ function CoordinateSelect(props: Props) {
 
     return (
         <Select className='coordinates-select' size='large' optionLabelProp='children' onSearch={debouncedSearch}
-                placeholder='Search Coordinates'
+                placeholder={placeholder || 'Search Coordinates'}
                 defaultValue={option} onSelect={onChange as any} loading={loading} showSearch filterOption={false}
                 notFoundContent={loading ? <LoadingOutlined spin/> : null} allowClear showArrow={false}>
             {coordinates && coordinates.map(coordinate =>

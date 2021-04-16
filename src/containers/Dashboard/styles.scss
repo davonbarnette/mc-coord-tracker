@@ -8,8 +8,29 @@
 
   .left {
     @include flex(column, flex-start, flex-start);
-    flex: 0 1 350px;
+    flex: 0 1 500px;
+    height: 100%;
+    margin-right: 24px;
+
+    .coordinates-table-wrapper {
+      @include box-shadow-4;
+      background:white;
+      width:100%;
+      border-radius: 10px;
+    }
+
+    .directions-wrapper {
+      @include box-shadow-4;
+      background:white;
+      overflow: hidden;
+      border-radius: 10px;
+      width: 100%;
+      margin-bottom: 36px;
+    }
+
+  }
+  .right {
     height:100%;
-    margin-right:24px;
+    width:100%;
   }
 }

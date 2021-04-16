@@ -38,7 +38,7 @@ export default class Button extends Component<ButtonProps, any> {
         const { enabled, children, style, className, color, loading, icon, htmlType } = this.props;
 
         return(
-            <button className={cx('custom-button', className || '', color || 'orange', {enabled, loading, disabled:!enabled || loading})} type={htmlType || 'submit'} onClick={this.onButtonClick} style={style}>
+            <button className={cx('custom-button', className || '', color || 'blue', {enabled, loading, disabled:!enabled || loading})} type={htmlType || 'submit'} onClick={this.onButtonClick} style={style}>
                 <div className='bar'/>
                 {icon && <div className='icon-left'>{icon}</div>}
                 {children}

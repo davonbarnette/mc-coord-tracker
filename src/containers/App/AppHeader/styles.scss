@@ -16,7 +16,6 @@
   .content {
     @include flex(row, space-between, center);
     @include pad-box(24px 0);
-    @include scale-max-content-width;
 
     @media screen and (max-width: $screen-md-min) {
       @include pad-box(14px 0);

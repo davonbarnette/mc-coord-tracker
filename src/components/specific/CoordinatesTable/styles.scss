@@ -1,5 +1,62 @@
 @import '../../../global/scss/config';
 
-.coordinates-list {
+.coordinates-table {
+  width: 100%;
 
+  .header {
+    @include flex(row, space-between, center);
+    @include pad-box(9px 18px);
+    @include border(none none solid none);
+
+    .title {
+      @include font(20px, 700, 0, $dark-gray);
+      font-family: IBM Plex Sans, sans-serif;
+
+    }
+  }
+
+  .ant-pagination {
+    margin-right:12px;
+    &-item-active {
+      border-style: none none solid none;
+      border-width: 3px;
+      border-radius: 0;
+    }
+  }
+
+  .filters {
+    @include pad-box(18px);
+    @include border(none none solid none);
+  }
+
+  .name-column {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+    line-height: 1em;
+
+    .name {
+
+    }
+
+    .coordinates {
+      @include flex(row, flex-start, center);
+      @include font(13px, 600, 0, $medium-gray);
+      font-family: JetBrains Mono, monospace;
+      margin-top: 9px;
+
+      .x {
+        color: $light-blue;
+        margin-right: 6px;
+      }
+
+      .y {
+        color: $green;
+        margin-right: 6px;
+      }
+
+      .z {
+        color: $orange;
+      }
+    }
+  }
 }

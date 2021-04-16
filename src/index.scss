@@ -6,7 +6,7 @@ body {
   padding: 0;
 
   font-family: Inter, -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, Helvetica, Arial, sans-serif;
-  font-weight:500;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -14,7 +14,7 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 .bounce {
@@ -22,10 +22,90 @@ code {
   -webkit-animation: bounce 0.7s infinite alternate;
 }
 
+.ant-input {
+  border: none !important;
+  @include pad-box(10px 15px !important);
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.ant-drawer-body {
+  background: $secondary-background-color;
+}
+
+.ant-select-selector {
+  border: none !important;
+  @include pad-box(0 15px !important);
+
+}
+
+.ant-select-focused {
+  border: none !important;
+  box-shadow: none !important;
+
+  & .ant-select-selector {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+
+.ant-form-item {
+  @include border(solid);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.2s;
+  background:white;
+
+  &:focus-within {
+    -webkit-box-shadow: 0 0 0 2px rgba(93, 132, 228, 1);
+    -moz-box-shadow: 0 0 0 2px rgba(93, 132, 228, 1);
+    box-shadow: 0 0 0 2px rgba(93, 132, 228, 1);
+    border: 1px solid transparent;
+  }
+
+  &-label {
+    @include pad-box(6px 15px 0 15px !important);
+    margin-bottom: 0 !important;
+
+    & > label {
+      @include font(12px !important, 600 !important, 0, $medium-gray);
+      font-family: IBM Plex Sans, sans-serif;
+    }
+  }
+}
+
+.form-stickied-footer {
+  @include flex(row, flex-end, center);
+  @include pad-box(12px 24px);
+  @include border(solid none none none);
+  z-index: 1000;
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: white;
+
+  & > button {
+    width: fit-content;
+    margin-left: auto;
+  }
+}
+
+.ant-input-lg {
+  @include pad-box(8px 16px !important);
+}
+
 .ant-notification-notice {
 
-  position:relative;
-  border-radius:8px !important;
+  position: relative;
+  border-radius: 8px !important;
 
   &::before {
     width: 100%;
@@ -49,8 +129,8 @@ code {
 }
 
 .ant-menu-item {
-  margin-top:0 !important;
-  margin-bottom:0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .ant-modal-body {
@@ -61,23 +141,25 @@ code {
   @include pad-box(12px);
   @include flex(row, flex-start, flex-start);
   @include font(14px, 500, 0, $dark-gray);
+
   .ant-modal-confirm-content {
-    margin-top:0 !important;
+    margin-top: 0 !important;
 
   }
 }
+
 .ant-modal-confirm-btns {
   @include pad-box(12px);
   margin-top: 12px !important;
 }
 
 .ant-form-explain {
-  margin-top:6px !important;
+  margin-top: 6px !important;
 }
 
 .ant-form-item-no-colon {
   &::after {
-    display:none;
+    display: none;
   }
 }
 
@@ -96,7 +178,7 @@ code {
 }
 
 .ant-result-title-override {
- @include font(16px, 500, 0, $dark-gray);
+  @include font(16px, 500, 0, $dark-gray);
 }
 
 .ant-custom-menu-override {
@@ -116,13 +198,13 @@ code {
 
     .anticon {
       font-size: 18px !important;
-      margin-right:0 !important;
+      margin-right: 0 !important;
       color: $light-blue;
     }
 
     &.red {
       & span {
-        color:$error-color;
+        color: $error-color;
       }
     }
 
@@ -150,13 +232,16 @@ code {
       background-color: $secondary-background-color;
       cursor: pointer;
     }
+
     &.ant-dropdown-menu-item-disabled {
       .anticon {
         color: $medium-gray;
       }
+
       .title {
         color: $medium-gray !important;
       }
+
       &:hover {
         background-color: transparent;
         cursor: not-allowed;
@@ -167,36 +252,38 @@ code {
 
 .ant-alert {
   background-color: #eaeaea !important;
-  border-width:0 !important;
-  position:relative;
-  overflow:hidden;
+  border-width: 0 !important;
+  position: relative;
+  overflow: hidden;
   padding: 16px 16px 16px 20px !important;
 
   &-message {
     @include font(16px, 600, 0, $dark-gray);
   }
-  &-description{
+
+  &-description {
     @include font(14px, 500, 0, #5a5a5a);
   }
 
   &:before {
-    position:absolute;
-    left:0;
-    top:0;
-    content:'';
-    height:100%;
-    width:5px;
-    background:$primary-background-color;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    height: 100%;
+    width: 5px;
+    background: $primary-background-color;
   }
 
   &-info {
-    &:before{
-      background:$primary-button-bg-color;
+    &:before {
+      background: $primary-button-bg-color;
     }
   }
+
   &-warning {
-    &:before{
-      background:$error-color;
+    &:before {
+      background: $error-color;
     }
   }
 }
@@ -204,6 +291,7 @@ code {
 .ant-form-item-label {
   margin-bottom: 6px;
   line-height: initial !important;
+
   & > label {
     @include font(14px, 500, 0, $medium-gray !important);
   }
@@ -217,7 +305,7 @@ code {
     @include font(24px, 900, 0, #505050);
     @include pad-box(12px);
     @include border(none none solid none);
-    width:100%;
+    width: 100%;
 
   }
 
@@ -227,7 +315,7 @@ code {
 
     & > .leaflet-popup-content {
       @include flex-center(column);
-      width:300px !important;
+      width: 300px !important;
       margin: 0 !important;
     }
   }
@@ -238,8 +326,9 @@ code {
 
   .img-wrapper {
     @include pad-box(12px);
+
     & > img {
-      width:100%;
+      width: 100%;
     }
   }
 
@@ -255,20 +344,20 @@ code {
 }
 
 .anticon-check-circle > svg {
-  color:$green;
+  color: $green;
 }
 
 .ant-dropdown {
   @include box-shadow-4;
   //@include border(solid);
   border-color: #e6e6e6;
-  padding:0 !important;
-  overflow:hidden;
+  padding: 0 !important;
+  overflow: hidden;
   border-radius: 5px;
 
   &-menu {
     padding: 0 !important;
-    border-radius:0 !important;
+    border-radius: 0 !important;
   }
 
 }
@@ -292,14 +381,16 @@ code {
 
   &-description {
     @include font(16px, 500, 0, $dark-gray);
-    margin-top:24px !important;
+    margin-top: 24px !important;
   }
+
   &-image {
-    height:200px !important;
+    height: 200px !important;
   }
 
 }
+
 .ant-drawer-close {
-  z-index:1000 !important;
+  z-index: 1000 !important;
 }
 

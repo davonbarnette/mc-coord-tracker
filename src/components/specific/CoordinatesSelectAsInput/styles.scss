@@ -1,0 +1,87 @@
+@import '../../../global/scss/config';
+
+.coordinates-select-as-input {
+  width: 100%;
+  outline: none !important;
+
+  .ant-input {
+    @include pad-box(9px 18px);
+    border: none !important;
+    outline: none !important;
+
+
+    &:focus {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none;
+    }
+  }
+
+  .coordinate-result {
+    @include flex(row, flex-start, center);
+    @include pad-box(18px);
+    @include font(14px, 700, 0, $dark-gray);
+    width: 100%;
+    font-family: JetBrains Mono, monospace;
+
+    &.selected {
+      @include border(none none solid none);
+    }
+
+    .info {
+      @include flex(row, flex-start, center);
+      width: 100%;
+      line-height: 1em;
+      margin-left: 12px;
+
+      .name {
+
+      }
+
+      .coordinates {
+        @include flex(row, flex-start, center);
+        @include font(13px, 600, 0, $medium-gray);
+        margin-left: auto;
+
+        .x {
+          color: $light-blue;
+          margin-right: 6px;
+        }
+
+        .y {
+          color: $green;
+          margin-right: 6px;
+        }
+
+        .z {
+          color: $orange;
+        }
+      }
+    }
+
+    &:not(.selected):hover {
+      background: #f1f1f1;
+      cursor: pointer;
+    }
+  }
+
+  .world-group {
+    margin-top: 12px;
+    @include border(none none solid none);
+
+    .world {
+      @include flex(row, flex-start, center);
+      @include font(12px, 500, 0, $medium-gray);
+      @include pad-box(3px 18px);
+      margin-bottom:12px;
+    }
+
+    .coordinate-results {
+      @include flex(column, flex-start, flex-start);
+
+
+    }
+  }
+
+
+}

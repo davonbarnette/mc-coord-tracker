@@ -12,7 +12,7 @@ export interface AppRouteHeader {
     hide?:boolean,
 }
 
-export interface AppRoutesObject {
+export interface IAppRoutesObject {
     [key:string]:AppRoute,
 }
 
@@ -43,7 +43,7 @@ export const AppHeaderItems:{[key:string]: AppRouteHeader[]} = {
 
 };
 
-export const AppRoutesPathReference:AppRoutesObject = {
+export const AppRoutesPathReference:IAppRoutesObject = {
 
 };
 

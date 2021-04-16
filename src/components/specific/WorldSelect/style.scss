@@ -1,0 +1,8 @@
+@import "../../../global/scss/config";
+
+.world-select {
+  @include flex(column, flex-start, flex-start);
+  &-search{
+    width:100%;
+  }
+}

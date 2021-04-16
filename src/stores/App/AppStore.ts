@@ -10,6 +10,8 @@ class AppStoreClass {
     authToken?:     string;
     authTokenChecked:boolean = false;
     baseUrl = 'https://api.davon.dev';
+
+    currentCoordinates = [];
     
     init(){
 
@@ -27,6 +29,7 @@ decorate(AppStoreClass, {
     authTokenChecked:observable,
     user:           observable,
     necessaryDataIsLoaded: computed,
+    currentCoordinates:observable,
 });
 
 

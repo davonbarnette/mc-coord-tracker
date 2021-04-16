@@ -1,33 +1,55 @@
+import {IMinecraftCoordinate} from "../../../api/CoordinatesTypes";
+import React from 'react';
+import {StringUtils} from "../../../global/utils/string";
+import {Popover, Typography} from "antd";
+
 const CoordinatesTableConfig = [
     {
         id: 'name',
         title: 'Name',
-        dataIndex:'name',
+        dataIndex: 'name',
+        render: (name: string, record: IMinecraftCoordinate) => {
+            const {x, y, z} = record;
+            return (
+                <div className='name-column'>
+                    <div className='name'>
+                        {name}
+                    </div>
+                    <div className='coordinates'>
+                        <div className='x'>{x}</div>
+                        <div className='y'>{y || 'None'}</div>
+                        <div className='z'>{z}</div>
+                    </div>
+                </div>
+            )
+        }
     },
     {
-        id: 'x',
-        title: 'X',
-        dataIndex:'x',
-    },
-    {
-        id: 'y',
-        title: 'Y',
-        dataIndex:'y',
-    },
-    {
-        id: 'z',
-        title: 'Z',
-        dataIndex:'z',
+        id: 'world',
+        title: 'World',
+        dataIndex: 'world',
+        render: (world: string) => {
+            return StringUtils.camelCaseToRegular(world, true);
+        }
     },
     {
         id: 'owner',
         title: 'Owner',
-        dataIndex:'owner',
+        dataIndex: 'owner',
     },
     {
         id: 'description',
         title: 'Description',
-        dataIndex:'description',
+        dataIndex: 'description',
+        render: (description: string) => {
+            return (
+                <Popover content={description} overlayStyle={{maxWidth:300}}>
+                    <Typography.Paragraph ellipsis={{rows: 1}} style={{maxWidth: 200, marginBottom: 0}}>
+                        {description}
+                    </Typography.Paragraph>
+                </Popover>
+            )
+        }
     },
 ]
 
